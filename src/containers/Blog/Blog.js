@@ -8,8 +8,14 @@ import "./Blog.css";
 
 class Blog extends Component {
   componentDidMount() {
-    const posts = axios.get("https://jsonplaceholder.typicode.com/posts");
+    // it doesn't finish inmediately, it needs time to go to the server and get the data, JS thought executes your code in a  synchronous manner
+    // it resolves when the dato from the backend is there;
+
+    axios.get("https://jsonplaceholder.typicode.com/posts").then((response) => {
+      console.log("response", response);
+    });
   }
+
   render() {
     return (
       <div>
