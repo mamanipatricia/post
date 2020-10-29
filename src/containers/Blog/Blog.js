@@ -17,7 +17,7 @@ class Blog extends Component {
     // it resolves when the dato from the backend is there;
 
     axios
-      .get("https://jsonplaceholder.typicode.com/posts")
+      .get("/posts")
       .then((response) => {
         const posts = response.data.slice(0, 4); // just 1 to 4 elements
         const updatedPosts = posts.map((post) => {
