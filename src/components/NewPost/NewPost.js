@@ -9,6 +9,10 @@ class NewPost extends Component {
     content: "",
     author: "Max",
   };
+
+  componentDidMount () {
+    console.log('this.props:-', this.props)
+  }
   postDataHandler = () => {
     //   axios will automatically basically stringify this, so turn this into data
     const data = {

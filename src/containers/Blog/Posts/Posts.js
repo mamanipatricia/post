@@ -15,7 +15,7 @@ class Posts extends Component {
   componentDidMount() {
     // it doesn't finish inmediately, it needs time to go to the server and get the data, JS thought executes your code in a  synchronous manner
     // it resolves when the dato from the backend is there;
-
+    console.log("this.props:: ", this.props);
     axios
       .get("/posts")
       .then((response) => {
