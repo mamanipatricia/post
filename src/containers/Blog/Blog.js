@@ -5,7 +5,6 @@ import { Route, NavLink, Switch } from "react-router-dom";
 
 import Posts from "./Posts/Posts";
 import NewPosts from "../../components/NewPost/NewPost";
-import FullPost from "./FullPost/FullPost";
 
 import "./Blog.css";
 // import classes from "*.module.css";
@@ -23,7 +22,7 @@ class Blog extends Component {
                 now we override that with exact 
                 */}
                 <NavLink
-                  to="/"
+                  to="/posts/"
                   exact
                   activeClassName="my-active"
                   activeStyle={{
@@ -31,7 +30,7 @@ class Blog extends Component {
                     textDecoration: "underline",
                   }}
                 >
-                  Home
+                  Posts
                 </NavLink>
               </li>
               <li>
@@ -51,17 +50,22 @@ class Blog extends Component {
         {/* the first route that matches a given path will be loaded an thereafeter, it will just stop analyzing the routes, it won't render any other route  */}
 
         {/* this will always get analized */}
-        <Route path="/" exact component={Posts} />
+        {/* <Route path="/" exact component={Posts} /> */}
+
         {/* <Switch> </Switch> to ensure that only one route gets loaded */}
         <Switch>
           {/* <Posts /> */}
           {/* i want to load this dynamically depending on the path we have in the URL and for (slash nothing) */}
           {/* <Route path="/" exact render={() => <h1>Home</h1>} />
+
         <Route path="/" render={() => <h1>Home 2</h1>} /> */}
-          <Route path="/" exact component={Posts} />
+
+          {/* <Route path="/" exact component={Posts} /> */}
+          <Route path="/posts" component={Posts} />
           <Route path="/new-post" component={NewPosts} />
+
           {/* ="/:id   -> route parameter */}
-          <Route path="/:id" exact component={FullPost} />
+          {/* <Route path="/:id" exact component={FullPost} /> */}
           {/* <Route path="/posts:id" exact component={FullPost} /> */}
 
           {/* prevent to re render the page - LInk*/}
