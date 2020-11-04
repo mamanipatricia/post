@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 // import axios from "axios";
-import { Route, Link } from "react-router-dom";
+import { Route, NavLink } from "react-router-dom";
+// NavLink = to add some styling
 
 import Posts from "./Posts/Posts";
 import NewPosts from "../../components/NewPost/NewPost";
+import FullPost from "./FullPost/FullPost";
 
 import "./Blog.css";
 // import classes from "*.module.css";
@@ -16,10 +18,24 @@ class Blog extends Component {
           <nav>
             <ul>
               <li>
-                <Link to="/">Home</Link>
+                {/* to="/"> -> react treats this as a prefix "/"  
+                the full path should be this "/", the active link.. 
+                now we override that with exact 
+                */}
+                <NavLink
+                  to="/"
+                  exact
+                  activeClassName="my-active"
+                  activeStyle={{
+                    color: "#fa923f",
+                    textDecoration: "underline",
+                  }}
+                >
+                  Home
+                </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
                   to={{
                     pathname: "/new-post",
                     hash: "#submit",
@@ -27,7 +43,7 @@ class Blog extends Component {
                   }}
                 >
                   New Post
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </nav>
@@ -38,6 +54,8 @@ class Blog extends Component {
         <Route path="/" render={() => <h1>Home 2</h1>} /> */}
         <Route path="/" exact component={Posts} />
         <Route path="/new-post" component={NewPosts} />
+        {/* ="/:id   -> route parameter */}
+        <Route path="/:id" exact component={FullPost} />
 
         {/* prevent to re render the page - LInk*/}
       </div>
