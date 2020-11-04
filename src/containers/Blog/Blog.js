@@ -39,7 +39,7 @@ class Blog extends Component {
         <Route path="/" exact component={Posts} />
         <Route path="/new-post" component={NewPosts} />
 
-        {/* prevent to re render the page */}
+        {/* prevent to re render the page - LInk*/}
       </div>
     );
   }
