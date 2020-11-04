@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import axios from "axios";
-import { Route, NavLink, Switch } from "react-router-dom";
+import { Route, NavLink, Switch, Redirect } from "react-router-dom";
 // NavLink = to add some styling
 
 import Posts from "./Posts/Posts";
@@ -61,8 +61,13 @@ class Blog extends Component {
         <Route path="/" render={() => <h1>Home 2</h1>} /> */}
 
           {/* <Route path="/" exact component={Posts} /> */}
-          <Route path="/posts" component={Posts} />
           <Route path="/new-post" component={NewPosts} />
+          <Route path="/posts" component={Posts} />
+
+          {/* it doesn't render content, it simply just changes the URL so that we then reach */}
+          <Redirect from="/" to="/posts" />
+
+          {/* <Route path="/" component={Posts} /> */}
 
           {/* ="/:id   -> route parameter */}
           {/* <Route path="/:id" exact component={FullPost} /> */}
