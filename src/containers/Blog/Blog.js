@@ -70,8 +70,10 @@ class Blog extends Component {
           ) : null}
           <Route path="/posts" component={Posts} />
 
+          <Route render={() => <h1>Not found</h1>} />
+
           {/* it doesn't render content, it simply just changes the URL so that we then reach */}
-          <Redirect from="/" to="/posts" />
+          {/* <Redirect from="/" to="/posts" /> */}
 
           {/* <Route path="/" component={Posts} /> */}
 
