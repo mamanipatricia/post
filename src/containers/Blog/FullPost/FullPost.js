@@ -9,13 +9,12 @@ class FullPost extends Component {
   };
 
   componentDidMount() {
-    console.log("this.props:: ", this.props);
+    console.log(this.props);
     this.loadData();
   }
 
   componentDidUpdate() {
-
-    
+    this.loadData();
   }
 
   loadData() {
@@ -23,10 +22,10 @@ class FullPost extends Component {
       if (
         !this.state.loadedPost ||
         (this.state.loadedPost &&
-          this.state.loadedPost.id != +this.props.match.params.id)
+          this.state.loadedPost.id !== +this.props.match.params.id)
       ) {
         axios.get("/posts/" + this.props.match.params.id).then((response) => {
-          //   console.log("response", response);
+          // console.log(response);
           this.setState({ loadedPost: response.data });
         });
       }
@@ -35,31 +34,28 @@ class FullPost extends Component {
 
   deletePostHandler = () => {
     axios.delete("/posts/" + this.props.match.params.id).then((response) => {
-      console.log("response~~>", response);
+      console.log(response);
     });
   };
 
   render() {
     let post = <p style={{ textAlign: "center" }}>Please select a Post!</p>;
     if (this.props.match.params.id) {
-      post = <p style={{ textAlign: "center" }}>Loading</p>;
+      post = <p style={{ textAlign: "center" }}>Loading...!</p>;
     }
-
     if (this.state.loadedPost) {
       post = (
         <div className="FullPost">
           <h1>{this.state.loadedPost.title}</h1>
-          <p>{this.state.loadedPost.content}</p>
+          <p>{this.state.loadedPost.body}</p>
           <div className="Edit">
-            <button className="Delete" onClick={this.deletePostHandler}>
+            <button onClick={this.deletePostHandler} className="Delete">
               Delete
             </button>
           </div>
-          holaaa!
         </div>
       );
     }
-
     return post;
   }
 }

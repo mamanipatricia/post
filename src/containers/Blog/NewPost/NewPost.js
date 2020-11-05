@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
+
 import "./NewPost.css";
 
 class NewPost extends Component {
@@ -12,6 +13,7 @@ class NewPost extends Component {
   };
 
   componentDidMount() {
+    // If unauth => this.props.history.replace('/posts');
     console.log("this.props:- ", this.props);
   }
   postDataHandler = () => {
@@ -23,7 +25,7 @@ class NewPost extends Component {
     };
 
     axios.post("/posts/", data).then((response) => {
-      // console.log("response----", response); // status = 201 successfully
+      console.log("response----", response); // status = 201 successfully
       this.props.history.replace("/posts");
       // this.setState({ submitted: true });
     });
