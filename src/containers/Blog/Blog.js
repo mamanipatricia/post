@@ -4,7 +4,13 @@ import { Route, NavLink, Switch, Redirect } from "react-router-dom";
 // NavLink = to add some styling
 
 import Posts from "./Posts/Posts";
-import NewPosts from "../../components/NewPost/NewPost";
+// import NewPosts from "../../components/NewPost/NewPost";
+import asyncComponent from "../../hoc/asyncComponent";
+const AsyncNewPost = asyncComponent(() => {
+  // the import keyword as a function
+  // special syntax the dynamic import syntax which means whatever comes between the parentheses here is only imported when that function here is executed and that function here will only be executed once we render asyncNewPost to the screen. So then take my original path to new post and now i'm only importing this when this constant gets used somewhere.
+  return import("../../components/NewPost/NewPost");
+});
 
 import "./Blog.css";
 // import classes from "*.module.css";
@@ -66,7 +72,7 @@ class Blog extends Component {
 
           {/* <Route path="/" exact component={Posts} /> */}
           {this.state.auth ? (
-            <Route path="/new-post" component={NewPosts} />
+            <Route path="/new-post" component={AsyncNewPost} />
           ) : null}
           <Route path="/posts" component={Posts} />
 
