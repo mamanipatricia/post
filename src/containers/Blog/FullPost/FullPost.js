@@ -13,7 +13,10 @@ class FullPost extends Component {
     this.loadData();
   }
 
-  componentDidUpdate() {}
+  componentDidUpdate() {
+
+    
+  }
 
   loadData() {
     if (this.props.match.params.id) {
@@ -52,6 +55,7 @@ class FullPost extends Component {
               Delete
             </button>
           </div>
+          holaaa!
         </div>
       );
     }
