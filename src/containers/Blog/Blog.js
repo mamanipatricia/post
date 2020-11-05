@@ -10,6 +10,10 @@ import "./Blog.css";
 // import classes from "*.module.css";
 
 class Blog extends Component {
+  state = {
+    auth: false,
+  };
+
   render() {
     return (
       <div className="Blog">
@@ -61,7 +65,9 @@ class Blog extends Component {
         <Route path="/" render={() => <h1>Home 2</h1>} /> */}
 
           {/* <Route path="/" exact component={Posts} /> */}
-          <Route path="/new-post" component={NewPosts} />
+          {this.state.auth ? (
+            <Route path="/new-post" component={NewPosts} />
+          ) : null}
           <Route path="/posts" component={Posts} />
 
           {/* it doesn't render content, it simply just changes the URL so that we then reach */}
